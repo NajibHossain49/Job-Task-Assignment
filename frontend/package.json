@@ -21,6 +21,7 @@
     "react-error-boundary": "^4.0.13",
     "react-router-dom": "^7.2.0",
     "sortablejs": "^1.15.6",
+    "sweetalert2": "^11.17.2",
     "ws": "^8.18.0"
   },
   "devDependencies": {
