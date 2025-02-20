@@ -67,6 +67,100 @@ async function run() {
           .json({ success: false, message: "Internal Server Error" });
       }
     });
+
+    // Get all tasks for a user
+    app.get("/api/tasks/:email", async (req, res) => {
+      try {
+        const { email } = req.params;
+        const tasks = await Collection.find({ userEmail: email }).toArray();
+        res.status(200).json({ success: true, tasks });
+      } catch (error) {
+        res
+          .status(500)
+          .json({ success: false, message: "Internal Server Error" });
+      }
+    });
+
+    // Create a new task
+    app.post("/api/tasks", async (req, res) => {
+      try {
+        const { title, description, category, userEmail, userName, userPhoto } =
+          req.body;
+        if (!title || !category || !userEmail) {
+          return res
+            .status(400)
+            .json({ success: false, message: "Missing required fields" });
+        }
+
+        const task = {
+          title,
+          description,
+          category,
+          userEmail,
+          userName,
+          userPhoto,
+          timestamp: new Date(),
+        };
+
+        const result = await Collection.insertOne(task);
+        res
+          .status(201)
+          .json({ success: true, task: { ...task, _id: result.insertedId } });
+      } catch (error) {
+        res
+          .status(500)
+          .json({ success: false, message: "Internal Server Error" });
+      }
+    });
+
+    // Update a task
+    app.put("/api/tasks/:id", async (req, res) => {
+      try {
+        const { id } = req.params;
+        const { title, description, category } = req.body;
+
+        const result = await Collection.updateOne(
+          { _id: new ObjectId(id) },
+          { $set: { title, description, category } }
+        );
+
+        if (result.modifiedCount === 0) {
+          return res
+            .status(404)
+            .json({ success: false, message: "Task not found" });
+        }
+
+        res
+          .status(200)
+          .json({ success: true, message: "Task updated successfully" });
+      } catch (error) {
+        res
+          .status(500)
+          .json({ success: false, message: "Internal Server Error" });
+      }
+    });
+
+    // Delete a task
+    app.delete("/api/tasks/:id", async (req, res) => {
+      try {
+        const { id } = req.params;
+        const result = await Collection.deleteOne({ _id: new ObjectId(id) });
+
+        if (result.deletedCount === 0) {
+          return res
+            .status(404)
+            .json({ success: false, message: "Task not found" });
+        }
+
+        res
+          .status(200)
+          .json({ success: true, message: "Task deleted successfully" });
+      } catch (error) {
+        res
+          .status(500)
+          .json({ success: false, message: "Internal Server Error" });
+      }
+    });
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
   }
