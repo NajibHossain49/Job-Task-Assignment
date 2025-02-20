@@ -53,28 +53,48 @@ A simple task management app that allows users to add, edit, delete, and reorder
    npm install
    ```
 
-4. **Set up Environment Variables**
+Here’s the updated portion for setting up environment variables in your `README.md` file:
 
-   - Create a `.env` & `.env.local` file in the root of the backend & frontend folder and add necessary environment variables (e.g., database connection string).
+---
+
+## 4. **Set up Environment Variables**
+
+### Backend:
+
+1. **Create a `.env` file** in the root of the **backend** folder and add the following environment variables:
 
    Example:
-   ```.env
-   
-DB_USER=<Add your DB_USER>
-SECRET_KEY=<Add your SECRET_KEY>
+   ```env
+   DB_USER=<Add your DB_USER>
+   DB_PASSWORD=<Add your DB_PASSWORD>
+   DB_HOST=<Add your DB_HOST>
+   DB_NAME=<Add your DB_NAME>
+   SECRET_KEY=<Add your SECRET_KEY>
+   PORT=5000
    ```
-```.env.local
-VITE_FIREBASE_API_KEY=<Add your Firebase Credential>
-VITE_FIREBASE_AUTH_DOMAIN=<Add your Firebase Credential>
-VITE_FIREBASE_PROJECT_ID=<Add your Firebase Credential>
-VITE_FIREBASE_STORAGE_BUCKET=<Add your Firebase Credential>
-VITE_FIREBASE_MESSAGING_SENDER_ID=<Add your Firebase Credential>
-VITE_FIREBASE_APP_ID=<Add your Firebase Credential>
 
-For development
-VITE_API_URL=http://localhost:5000
+   Replace `<Add your ...>` with your actual database credentials and secret key values.
 
-```
+### Frontend:
+
+2. **Create a `.env.local` file** in the root of the **frontend** folder and add the following environment variables for Firebase credentials and local development configuration:
+
+   Example:
+   ```env
+   VITE_FIREBASE_API_KEY=<Add your Firebase API key>
+   VITE_FIREBASE_AUTH_DOMAIN=<Add your Firebase Auth domain>
+   VITE_FIREBASE_PROJECT_ID=<Add your Firebase project ID>
+   VITE_FIREBASE_STORAGE_BUCKET=<Add your Firebase storage bucket>
+   VITE_FIREBASE_MESSAGING_SENDER_ID=<Add your Firebase messaging sender ID>
+   VITE_FIREBASE_APP_ID=<Add your Firebase app ID>
+
+   # For local development
+   VITE_API_URL=http://localhost:5000
+   ```
+
+   Replace `<Add your ...>` with your actual Firebase credentials and local API URL.
+
+> **Important:** Make sure to add `.env.local` to your `.gitignore` to prevent it from being committed to version control.
 
 5. **Run the Application**
 
