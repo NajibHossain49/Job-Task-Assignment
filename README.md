@@ -6,7 +6,7 @@ A simple task management app that allows users to add, edit, delete, and reorder
 
 ## Live Links
 
-- **[Live Demo](#)**
+- **[Live Demo](https://task-management-application-49.web.app)**
 
 
 ## Dependencies
@@ -53,10 +53,6 @@ A simple task management app that allows users to add, edit, delete, and reorder
    npm install
    ```
 
-Here’s the updated portion for setting up environment variables in your `README.md` file:
-
----
-
 ## 4. **Set up Environment Variables**
 
 ### Backend:
@@ -66,12 +62,9 @@ Here’s the updated portion for setting up environment variables in your `READM
    Example:
    ```env
    DB_USER=<Add your DB_USER>
-   DB_PASSWORD=<Add your DB_PASSWORD>
-   DB_HOST=<Add your DB_HOST>
-   DB_NAME=<Add your DB_NAME>
    SECRET_KEY=<Add your SECRET_KEY>
-   PORT=5000
    ```
+   
 
    Replace `<Add your ...>` with your actual database credentials and secret key values.
 
@@ -110,7 +103,7 @@ Here’s the updated portion for setting up environment variables in your `READM
      npm start
      ```
 
-6. The app should now be running locally. Visit `http://localhost:3000` in your browser.
+6. The app should now be running locally. Visit `http://localhost:5173` in your browser.
 
 ## Technologies Used
 
@@ -130,3 +123,13 @@ Here’s the updated portion for setting up environment variables in your `READM
 - **Others:**
   - dotenv
 
+---
+
+## 🧑‍💻 Author
+
+Developed with ❤️ by **Najib Hossain**  
+[GitHub](https://github.com/NajibHossain49) | [LinkedIn](https://www.linkedin.com/in/md-najib-hossain)
+
+## 🌟 Show Your Support
+
+If you like this project, please ⭐ the repository and share it with others!
